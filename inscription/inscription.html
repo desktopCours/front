@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription</title>
+  <link rel="stylesheet" href="inscription.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Inscription</h1>
+    <form id="inscription-form" class="form">
+      <div class="form-group">
+        <label for="lastName">Nom</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Nom" required>
+      </div>
+      <div class="form-group">
+        <label for="firstName">Prénom</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Prénom" required>
+      </div>
+      <div class="form-group">
+        <label for="mail">Adresse e-mail</label>
+        <input type="email" id="mail" name="mail" placeholder="Adresse e-mail" required>
+      </div>
+      <div class="form-group">
+        <label for="city">Ville</label>
+        <input type="text" id="city" name="city" placeholder="Ville" required>
+      </div>
+      <div class="form-group">
+        <label for="region">Région</label>
+        <input type="text" id="region" name="region" placeholder="Région" required>
+      </div>
+      <div class="form-group">
+        <label for="pays">Pays</label>
+        <input type="text" id="pays" name="pays" placeholder="Pays" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+      </div>
+      <div class="form-group">
+        <label for="passwordConfirme">Confirmer mot de passe</label>
+        <input type="password" id="passwordConfirme" name="passwordConfirme" placeholder="Confirmer mot de passe" required>
+      </div>
+      <div class='error' id="error-message"></div>
+      <button id="submit" type="submit">S'inscrire</button>
+    </form>
+  </div>
+  <script src="inscription.js"></script>
+</body>
+</html>
