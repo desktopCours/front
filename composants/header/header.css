@@ -71,3 +71,24 @@
       background-color: white;
     }
   }
+
+.button {
+  /* styles par défaut du bouton */
+  padding: 0.5rem 1rem;
+  background-color: #ccc;
+  font-size: 1rem;
+  border: 2px solid rgb(46, 46, 46);
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  color: black
+}
+
+.button:hover {
+  /* animation au survol */
+  background-color: #adabab;
+}
+
+.button:active {
+  /* animation lors du clic */
+  transform: scale(0.95);
+}
