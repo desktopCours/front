@@ -44,12 +44,6 @@
   margin-right: 50%
 }
 
-.header .title {
-  position: absolute;
-  top: -12px;
-  right: 800px;
-}
-
 .header .setting {
   display: flex;
   align-items: center;
