@@ -1,22 +1,50 @@
-const { signin } = require('../services/req')
-
 // Récupérer les références des éléments du formulaire
 const form = document.getElementById("inscription-form");
 const mailInput = document.getElementById("mail");
 const passwordInput = document.getElementById("password");
-const passwordConfirmeInput = document.getElementById("passwordConfirme");
 const lastNameInput = document.getElementById("lastName");
 const firstNameInput = document.getElementById("firstName");
 const paysInput = document.getElementById("pays");
 const regionInput = document.getElementById("region");
 const cityInput = document.getElementById("city");
-const connexionButton = document.getElementById("connexion");
 
-connexionButton.addEventListener("click", (event) => {
-  event.preventDefault();
+function goToHome() {
+  window.location.href = "../accueil/accueil.html";
+}
+
+function goToSetting() {
+  window.location.href = "../setting/setting.html";
+}
+
+function goToAddDepense() {
+  window.location.href = "../addDepense/addDepense.html";
+}
+
+function goToShowDepense() {
+  window.location.href = "../showDepense/showDepense.html";
+}
+
+function goToExit() {
+  localStorage.clear();
   window.location.href = "../connexion/connexion.html";
-});
+}
 
+// Récupérer les données utilisateur depuis le localStorage
+const storedUserData = localStorage.getItem("userData");
+
+// Vérifier si les données existent dans le localStorage
+if (storedUserData) {
+  const userData = JSON.parse(storedUserData);
+
+  // Remplir les champs du formulaire avec les données utilisateur
+  mailInput.value = userData.mail;
+  lastNameInput.value = userData.lastname;
+  firstNameInput.value = userData.firstname;
+  paysInput.value = userData.pays;
+  regionInput.value = userData.region;
+  cityInput.value = userData.city;
+  passwordInput.value = userData.password;
+}
 
 // Écouter l'événement de soumission du formulaire
 form.addEventListener("submit", async (event) => {
@@ -71,4 +99,3 @@ form.addEventListener("submit", async (event) => {
     console.error("error signin");
   }
 });
-

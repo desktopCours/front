@@ -1,4 +1,4 @@
-const { login } = require('../services/req');
+const { login } = require('../../services/req');
 
 // Récupérer les références des éléments du formulaire
 const form = document.getElementById("connexion-form");
@@ -32,7 +32,10 @@ form.addEventListener("submit", async (event) => {
       // Connexion réussie, vous pouvez utiliser les données de l'utilisateur et rediriger vers la page d'accueil
       console.log("Connexion réussie !");
       console.log(userData);
-
+    
+      // Stocker les données utilisateur dans le localStorage
+      localStorage.setItem("userData", JSON.stringify(userData));
+    
       // Rediriger vers la page d'accueil
       window.location.href = "../accueil/accueil.html";
     } else {
