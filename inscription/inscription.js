@@ -10,7 +10,13 @@ const firstNameInput = document.getElementById("firstName");
 const paysInput = document.getElementById("pays");
 const regionInput = document.getElementById("region");
 const cityInput = document.getElementById("city");
-const submitButton = document.getElementById("submit");
+const connexionButton = document.getElementById("connexion");
+
+connexionButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  window.location.href = "../connexion/connexion.html";
+});
+
 
 // Écouter l'événement de soumission du formulaire
 form.addEventListener("submit", async (event) => {
@@ -28,14 +34,9 @@ form.addEventListener("submit", async (event) => {
   if (password !== passwordConfirme) {
     const errorMessage = document.getElementById("error-message");
     errorMessage.textContent = "Les mots de passe ne correspondent pas";
-    console.log("nop");
     return;
   }
-
-  console.log("ici")
-
   try {
-    console.log("in try")
 
     const data = {
       firstname: firstName,
@@ -46,14 +47,10 @@ form.addEventListener("submit", async (event) => {
       pays: pays,
       region: region
     };
-    console.log("await")
 
     const success = await signin(data);
-    console.log("apres req")
 
     if (success) {
-      console.log("succes")
-
       // Réinitialiser le formulaire
       mailInput.value = "";
       passwordInput.value = "";
@@ -65,7 +62,7 @@ form.addEventListener("submit", async (event) => {
       cityInput.value = "";
 
       // Rediriger vers la page de connexion
-      window.location.href = "connexion/connexion.html";
+      window.location.href = "../connexion/connexion.html";
     } else {
       console.error("La requête d'inscription a échoué");
     }

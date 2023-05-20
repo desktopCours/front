@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Inscription</title>
   <link rel="stylesheet" href="inscription.css">
 </head>
+
 <body>
   <div class="container">
     <h1>Inscription</h1>
@@ -39,12 +41,17 @@
       </div>
       <div class="form-group">
         <label for="passwordConfirme">Confirmer mot de passe</label>
-        <input type="password" id="passwordConfirme" name="passwordConfirme" placeholder="Confirmer mot de passe" required>
+        <input type="password" id="passwordConfirme" name="passwordConfirme" placeholder="Confirmer mot de passe"
+          required>
       </div>
       <div class='error' id="error-message"></div>
-      <button id="submit" type="submit">S'inscrire</button>
+      <div class="buttonRedirec">
+        <button id="submit" type="submit">S'inscrire</button>
+        <button id="connexion" type="button">Connexion</button>
+      </div>
     </form>
   </div>
   <script src="inscription.js"></script>
 </body>
+
 </html>

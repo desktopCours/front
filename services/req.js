@@ -1,6 +1,6 @@
 async function signin(data) {
     try {
-    const response = await fetch('https://localhost:3000/user/signin', {
+    const response = await fetch('http://localhost:3000/user/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -10,15 +10,15 @@ async function signin(data) {
 
     if (response.ok) {
       const responseData = await response.json();
-      console.log(responseData.message);
+    return true;  // Renvoyer true en cas de succès
     } else {
       const errorData = await response.json();
-      console.error(errorData.message);
+      return false;  // Renvoyer true en cas de succès
     }
   } catch (error) {
     console.error(error);
   }
-} 
+}
 
 async function login(data) {
     try {
@@ -41,5 +41,6 @@ async function login(data) {
       return null; // Retourner null en cas d'erreur
     }
   }
+  
 
-module.exports = { signin, login };
+module.exports = { login, signin};

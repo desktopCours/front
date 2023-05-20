@@ -1,3 +1,10 @@
+.buttonRedirec {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .error {
   color: red;
   font-size: 14px;

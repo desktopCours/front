@@ -1,12 +1,11 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const fetch = require('electron-fetch');
 
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -14,9 +13,16 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js')
     },
   })
+  win.maximize();
 
-  win.loadFile('inscription/inscription.html')
+  win.loadFile('connexion/connexion.html')
 }
+
+// Écouter l'événement 'load-page' depuis le rendu
+ipcMain.on('load-page', (event, path) => {
+  const pagePath = path.join(__dirname, path);
+  mainWindow.loadFile(pagePath);
+});
 
 app.whenReady().then(() => {
   createWindow()
