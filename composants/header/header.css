@@ -10,6 +10,19 @@
   
   .button1 {
     margin-right: 40px;
+    margin-left: 75px;
+    padding: 15px;
+  }
+
+  .title {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid rgb(46, 46, 46);
+    color: #505050;
+    padding: 10px;
+    border-radius: 20px;
   }
   
   .header {

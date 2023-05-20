@@ -10,10 +10,6 @@ function goToHome() {
     window.location.href = "../addDepense/addDepense.html";
   }
   
-  function goToShowDepense() {
-    window.location.href = "../showDepense/showDepense.html";
-  }
-  
   function goToExit() {
     localStorage.clear();
     window.location.href = "../connexion/connexion.html";

@@ -41,6 +41,44 @@ async function login(data) {
       return null; // Retourner null en cas d'erreur
     }
   }
+
+  async function addDepense(data) {
+    try {
+      const response = await fetch('http://localhost:3000/account/addDepenses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+        return responseData; 
+      } else {
+        return null; 
+      }
+    } catch (error) {
+      console.error(error);
+      return null; 
+    }
+  }
+
+  async function getAccounts(userId) {
+    try {
+      // Effectuer la requête pour récupérer les comptes de l'utilisateur
+      const url = `http://localhost:3000/account/getAccountUser/${userId}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log("-->", data)
+      return data;
+    } catch (error) {
+      console.error('Erreur lors de la récupération des comptes :', error);
+      return [];
+    }
+  }
+  
+  
   
 
-module.exports = { login, signin};
+module.exports = { login, signin, addDepense, getAccounts};

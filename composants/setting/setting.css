@@ -37,7 +37,7 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  width: 330px;
+  width: 500px;
   border: 2px solid rgb(46, 46, 46);
   border-radius: 10px;
   background-color: #919191;
