@@ -11,64 +11,105 @@
 <body>
 
   <header class="header">
-    <div class="home" onclick="goToHome()">
-      <div class="img-container">
+    <div class="home">
+      <div class="img-container" onclick="goToHome()">
         <img class="img" src="../../assets/home.png" alt="Logo">
       </div>
       <button class="button1 button" onclick="goToAddDepense()">Ajouter une dépense</button>
     </div>
-    <div class="buttonsHeader">
-      <h1 class="title">AFR Budget</h1>
+    <div class="buttonsHeader title">
+      <img class="imgTitre" src="../../assets/logoAFR.png" alt="Logo">
+      <h1 class="titreH">AFR Budget</h1>
     </div>
-    <div class="setting" onclick="goToSetting()">
-      <div class="img-container">
-        <img class="img" src="https://png.pngtree.com/png-vector/20191023/ourlarge/pngtree-user-vector-icon-with-white-background-png-image_1849343.jpg" alt="Logo">
+    <div class="setting">
+      <div class="img-container" onclick="goToSetting()">
+        <img class="img"
+          src="https://png.pngtree.com/png-vector/20191023/ourlarge/pngtree-user-vector-icon-with-white-background-png-image_1849343.jpg"
+          alt="Logo">
       </div>
-      <div class="img-container" onclick="goToExit()">
-        <img class="img margin" src="../../assets/exit.png" alt="Logo">
+      <div class="exit-container" onclick="goToExit()">
+        <img class="img exit-img" src="../../assets/exit.png" alt="Logo">
       </div>
     </div>
   </header>
-  
-  
 
   <div class="container">
-    <form id="inscription-form" class="form">
-      <h1 class="titleForm">Setting</h1>
+    <form id="setting-form" class="form info">
+      <h1 class="titleForm">Informations personnelles</h1>
       <div class="form-group">
-        <label for="lastName">Nom</label>
+        <label for="lastName">Nom :</label>
         <input type="text" id="lastName" name="lastName" placeholder="Nom" required>
       </div>
       <div class="form-group">
-        <label for="firstName">Prénom</label>
+        <label for="firstName">Prénom :</label>
         <input type="text" id="firstName" name="firstName" placeholder="Prénom" required>
       </div>
       <div class="form-group">
-        <label for="mail">Adresse e-mail</label>
+        <label for="mail">Adresse e-mail :</label>
         <input type="email" id="mail" name="mail" placeholder="Adresse e-mail" required>
       </div>
       <div class="form-group">
-        <label for="city">Ville</label>
+        <label for="city">Ville :</label>
         <input type="text" id="city" name="city" placeholder="Ville" required>
       </div>
       <div class="form-group">
-        <label for="region">Région</label>
+        <label for="region">Région :</label>
         <input type="text" id="region" name="region" placeholder="Région" required>
       </div>
       <div class="form-group">
-        <label for="pays">Pays</label>
+        <label for="pays">Pays :</label>
         <input type="text" id="pays" name="pays" placeholder="Pays" required>
       </div>
-      <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-      </div>
-      <div class='error' id="error-message"></div>
       <div class="buttonRedirec">
         <button class="button" id="submit" type="submit">Enregistrer</button>
       </div>
+      <div id="success-message" class="success-message"></div>
     </form>
+
+
+
+    <div class="change-password">
+      <form id="change-password-form" class="form">
+        <h1 class="titleForm">Changer le mot de passe</h1>
+        <div class="form-group">
+          <label for="password">Nouveau mot de passe :</label>
+          <input type="password" id="password" name="password" placeholder="Rentrer le nouveau mot de passe" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmePassword">Confirmer le nouveau mot de passe :</label>
+          <input type="password" id="confirmePassword" name="confirmePassword"
+            placeholder="Confirmer votre nouveau mot de passe" required>
+        </div>
+        <div class='error' id="error-message"></div>
+        <div class="buttonRedirec">
+          <button class="button" id="submit" type="submit">Enregistrer</button>
+        </div>
+      </form>
+      <div id="success-mdp" class="success-message"></div>
+    </div>
+
+    <div class="manage-categories form">
+        <h1 class="titleForm">Gérer les catégories</h1>
+        <div class="category-list">
+          <!-- Les labels de catégorie seront générés ici -->
+        </div>
+        <div class="category-actions">
+          <div class="edit-category">
+            <input type="text" id="edit-category-input" placeholder="Nouveau nom de catégorie">
+            <button class="button" onclick="saveEditedCategory()">Sauvegarder</button>
+          </div>
+          <div class="delete-category">
+            <button class="button" onclick="deleteCategory()">Supprimer</button>
+          </div>
+          <div class="add-category">
+            <input type="text" id="new-category-name" placeholder="Nom de la nouvelle catégorie">
+            <button class="button" onclick="addCategory()">Enregistrer</button>
+          </div>
+        </div>
+    </div>    
+
   </div>
+
   <script src="setting.js"></script>
   <script src="../header/header.js"></script>
 </body>

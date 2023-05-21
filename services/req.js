@@ -44,6 +44,7 @@ async function login(data) {
 
 async function addDepense(data) {
     try {
+        console.log(data)
         const response = await fetch('http://localhost:3000/account/addDepenses', {
             method: 'POST',
             headers: {
@@ -51,6 +52,7 @@ async function addDepense(data) {
             },
             body: JSON.stringify(data)
         });
+
 
         if (response.ok) {
             const responseData = await response.json();
@@ -75,21 +77,6 @@ async function getDepenses() {
             const response = await fetch(`http://localhost:3000/account/getDepenses/${data._id}?titre=${titre}`, {
                 method: 'GET'
             });
-
-            async function getAccounts(userId) {
-                try {
-                    // Effectuer la requête pour récupérer les comptes de l'utilisateur
-                    const url = `http://localhost:3000/account/getAccountUser/${userId}`;
-                    const response = await fetch(url);
-                    const data = await response.json();
-                    console.log("-->", data)
-                    return data;
-                } catch (error) {
-                    console.error('Erreur lors de la récupération des comptes :', error);
-                    return [];
-                }
-            }
-
 
             if (response.ok) {
                 return await response.json();
@@ -150,9 +137,9 @@ async function getAccounts() {
 async function changeValue(ancienTitre, title, plafond) {
     try {
         const storedUserData = localStorage.getItem("userData");
-console.log(ancienTitre)
-console.log(title)
-console.log(plafond)
+        console.log(ancienTitre)
+        console.log(title)
+        console.log(plafond)
         if (storedUserData) {
             const data = JSON.parse(storedUserData);
             console.log(data);
@@ -181,5 +168,63 @@ console.log(plafond)
     }
 }
 
-module.exports = {signin, login, getDepenses, getDepensesBySearch, getAccounts, addDepense, changeValue};
+async function getCategorieUser() {
+    try {
+        const storedUserData = localStorage.getItem("userData");
+
+        if (storedUserData) {
+            const data = JSON.parse(storedUserData);
+            const response = await fetch(`http://localhost:3000/user/categorie/${data._id}`, {
+                method: 'GET'
+            });
+
+            if (response.ok) {
+                return response.json();
+            } else {
+                const errorData = await response.json();
+                console.error(errorData.message);
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function updateUser(data) {
+    try {
+        const storedUserData = localStorage.getItem("userData");
+        if (storedUserData) {
+            const dataId = JSON.parse(storedUserData);
+            console.log(data);
+            const response = await fetch(`http://localhost:3000/user/userUpdate/${dataId._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    lastname: data.lastname,
+                    firstname: data.firstname,
+                    mail: data.mail,
+                    city: data.city,
+                    region: data.region,
+                    pays: data.pays,
+                    password: data.password,
+                    categorie: data.categorie
+                })
+            });
+
+            if (response.ok) {
+                return await response.json();
+            } else {
+                const errorData = await response.json();
+                console.error(errorData.message);
+            }
+        }
+    } catch
+        (error) {
+        console.error(error);
+    }
+}
+
+module.exports = {signin, login, getDepenses, getDepensesBySearch, getAccounts, addDepense, changeValue, getCategorieUser, updateUser};
 

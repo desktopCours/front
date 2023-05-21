@@ -7,6 +7,7 @@ const categorieInput = document.getElementById("categorie");
 const montantInput = document.getElementById("montant");
 const dateInput = document.getElementById("date");
 const successMessage = document.getElementById("success-message");
+const accountInput = document.getElementById('account');
 
 successMessage.style.display = "none";
 
@@ -22,7 +23,7 @@ async function goToAddDepense() {
 
         console.log('Comptes récupérés:', accounts); // Vérifier si les comptes sont correctement récupérés
 
-        const accountInput = document.getElementById('account');
+       
         accountInput.innerHTML = '';
 
         accounts.forEach((account) => {
@@ -47,8 +48,12 @@ form.addEventListener("submit", async (event) => {
     const date = dateInput.value;
     const montant = montantInput.value;
 
+    // Récupérer la valeur de l'option sélectionnée dans le sélecteur
+    const compteId = accountInput.value;
+
     try {
         const data = {
+            compteId: compteId,
             titre: titre,
             categorie: categorie,
             montant: montant,

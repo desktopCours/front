@@ -16,7 +16,6 @@ async function fetchData() {
     }
 }
 
-
 function showAccounts() {
 
     for (let i = 0; i < data.length; i++) {
