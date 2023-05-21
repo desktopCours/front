@@ -15,7 +15,7 @@ const createWindow = () => {
   })
   win.maximize();
 
-  win.loadFile('composants/accueil/accueil.html')
+  win.loadFile('composants/connexion/connexion.html')
 }
 
 // Écouter l'événement 'load-page' depuis le rendu

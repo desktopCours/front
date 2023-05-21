@@ -9,8 +9,9 @@
 
 <body>
   <div class="container">
-    <h1>Inscription</h1>
+    <h1 class="title">AFR Budget</h1>
     <form id="inscription-form" class="form">
+      <h1 class="titleForm">Inscription</h1>
       <div class="form-group">
         <label for="lastName">Nom</label>
         <input type="text" id="lastName" name="lastName" placeholder="Nom" required>
@@ -44,10 +45,11 @@
         <input type="password" id="passwordConfirme" name="passwordConfirme" placeholder="Confirmer mot de passe"
           required>
       </div>
+      <div>
       <div class='error' id="error-message"></div>
       <div class="buttonRedirec">
         <button id="submit" type="submit">S'inscrire</button>
-        <button id="connexion" type="button">Connexion</button>
+        <button id="connexion" class='buttonconnec' type="button">Connexion</button>
       </div>
     </form>
   </div>
