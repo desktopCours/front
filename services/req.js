@@ -65,6 +65,28 @@ async function addDepense(data) {
     }
 }
 
+async function addAccount(data) {
+    try {
+        const response = await fetch('http://localhost:3000/account/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const responseData = await response.json();
+            return responseData;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
 async function getDepenses() {
     try {
         let idCompte = sessionStorage.getItem('idCompte')
@@ -81,7 +103,7 @@ async function getDepenses() {
             }
         }
     } catch (error) {
-        console.error (error);
+        console.error(error);
     }
 }
 
@@ -132,9 +154,9 @@ async function getAccounts() {
 async function changeValue(idAccount, title, plafond) {
     try {
         const storedUserData = localStorage.getItem("userData");
-console.log(ancienTitre)
-console.log(title)
-console.log(plafond)
+        console.log(ancienTitre)
+        console.log(title)
+        console.log(plafond)
         if (storedUserData) {
             const data = JSON.parse(storedUserData);
             const response = await fetch(`http://localhost:3000/account/update/${data._id}`, {
@@ -157,7 +179,7 @@ console.log(plafond)
             }
         }
     } catch
-        (error) {
+    (error) {
         console.error(error);
     }
 }
@@ -215,7 +237,7 @@ async function updateUser(data) {
             }
         }
     } catch
-        (error) {
+    (error) {
         console.error(error);
     }
 }
@@ -246,10 +268,10 @@ async function deleteDepenseRow(idDepense) {
             }
         }
     } catch
-        (error) {
+    (error) {
         console.error(error);
     }
 }
 
-module.exports = {signin, login, getDepenses, getDepensesBySearch, deleteDepenseRow, getAccounts, addDepense, changeValue, getCategorieUser, updateUser};
+module.exports = { signin, login, getDepenses, getDepensesBySearch, deleteDepenseRow, getAccounts, addDepense, changeValue, getCategorieUser, updateUser, addAccount };
 

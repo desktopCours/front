@@ -3,11 +3,11 @@ const { addDepense, getAccounts } = require("../../services/req");
 // Récupérer les références des éléments du formulaire
 const form = document.getElementById("addDepense-form");
 const titreInput = document.getElementById("titre");
-const categorieInput = document.getElementById("categorie");
 const montantInput = document.getElementById("montant");
 const dateInput = document.getElementById("date");
 const successMessage = document.getElementById("success-message");
 const accountInput = document.getElementById('account');
+const categorieInput = document.getElementById('categorie');
 
 successMessage.style.display = "none";
 
@@ -15,15 +15,16 @@ successMessage.style.display = "none";
 const storedUserData = localStorage.getItem("userData");
 const userData = JSON.parse(storedUserData);
 
-goToAddDepense();
+showAccount();
+showCategorie();
 
-async function goToAddDepense() {
+async function showAccount() {
     try {
         const accounts = await getAccounts(userData._id);
 
         console.log('Comptes récupérés:', accounts); // Vérifier si les comptes sont correctement récupérés
 
-       
+
         accountInput.innerHTML = '';
 
         accounts.forEach((account) => {
@@ -38,6 +39,29 @@ async function goToAddDepense() {
         console.error('Erreur lors de la récupération des comptes :', error);
     }
 }
+
+function showCategorie() {
+    try {
+        const categories = userData.categorie
+
+        console.log('categorie récupérés:', categories); 
+
+
+        categorieInput.innerHTML = '';
+
+        categories.forEach((categorie) => {
+            console.log('Categorie :', categorie); 
+
+            const option2 = document.createElement('option');
+            option2.value = categorie;
+            option2.text = categorie;
+            categorieInput.appendChild(option2);
+        });
+    } catch (error) {
+        console.error('Erreur lors de la récupération des categories :', error);
+    }
+}
+
 
 // Écouter l'événement de soumission du formulaire
 form.addEventListener("submit", async (event) => {

@@ -1,4 +1,4 @@
-const {getAccounts, changeValue} = require("../../services/req");
+const { getAccounts, changeValue } = require("../../services/req");
 const container = document.querySelector('.container');
 
 fetchData();
@@ -34,7 +34,7 @@ function showAccounts() {
 
         divTotal.appendChild(edit)
 
-        accountDiv.setAttribute( 'onclick',"goToDepenses()")
+        accountDiv.setAttribute('onclick', "goToDepenses()")
 
         const titre = document.createElement('p')
         const spent = document.createElement('p')
@@ -72,7 +72,7 @@ function showAccounts() {
     add.textContent = '+'
     accountDiv.classList.add('addAccount')
     accountDiv.appendChild(add)
-    accountDiv.setAttribute('onclick','goToAddAccount()')
+    accountDiv.setAttribute('onclick', 'goToAddAccount()')
     divTotal.appendChild(accountDiv)
     container.appendChild(divTotal);
 }
@@ -91,6 +91,9 @@ function goToDepenses() {
     }
 }
 
+function goToAddAccount() {
+    window.location.href = '../addAccount/addAccount.html'
+}
 
 function openModal() {
     const modal = document.getElementById("myModal");

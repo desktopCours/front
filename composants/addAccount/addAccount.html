@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Add depense</title>
-  <link rel="stylesheet" href="addDepense.css">
+  <link rel="stylesheet" href="addAccount.css">
   <link rel="stylesheet" href="../header/header.css">
 </head>
 
@@ -34,27 +34,15 @@
   </header> 
 
   <div class="container">
-     <form id="addDepense-form" class="form">
-      <h1 class="titleForm">Ajouter une dépense</h1>
+     <form id="addAccount-form" class="form">
+      <h1 class="titleForm">Ajouter un compte</h1>
       <div class="form-group">
-        <label for="account">Account :</label>
-        <select id="account" name="account" required></select>
+        <label for="title">Titre :</label>
+        <input type="text" id="title" name="title" placeholder="Titre du compte" required>
       </div>
       <div class="form-group">
-        <label for="titre">Titre :</label>
-        <input type="text" id="titre" name="titre" placeholder="Titre" required>
-      </div>
-      <div class="form-group">
-        <label for="categorie">Categorie :</label>
-        <select id="categorie" name="categorie" required></select>
-      </div>
-      <div class="form-group">
-        <label for="montant">Montant :</label>
-        <input type="number" id="montant" name="montant" placeholder="Montant" required>
-      </div>
-      <div class="form-group">
-        <label for="date">Date :</label>
-        <input type="date" id="date" name="date" placeholder="Sélectionnez une date" required>
+        <label for="plafond">Plafond :</label>
+        <input type="number" id="plafond" name="plafond" placeholder="Ajouter un plafond" required>
       </div>
       <div class="buttonRedirec">
         <button class="button" id="submit" type="submit">Ajouter</button>
@@ -62,7 +50,7 @@
     </form>
     <div id="success-message" class="success-message"></div>
   </div>
-  <script src="addDepense.js"></script>
+  <script src="addAccount.js"></script>
   <script src="../header/header.js"></script>
 </body>
 
