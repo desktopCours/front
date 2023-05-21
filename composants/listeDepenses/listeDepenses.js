@@ -1,4 +1,4 @@
-const {getDepenses, getDepensesBySearch} = require('../../services/req')
+const {getDepenses, getDepensesBySearch, deleteDepenseRow} = require('../../services/req')
 const searchButton = document.getElementById("searchName")
 const dd = document.getElementById("valueSearch")
 
@@ -61,28 +61,20 @@ function changeTable(data) {
             cellDate.textContent = formatDate(data[i].date);
             row.appendChild(cellDate);
 
+            const cellDate2 = document.createElement('td');
+            const button = document.createElement('button');
+            button.type = 'button'
+            button.classList.add('btn')
+            button.classList.add('btn-danger')
+            button.setAttribute('data-index',data[i]._id)
+            button.setAttribute('onclick','deleteDepense()')
+            button.textContent = "Supprimer"
+            cellDate2.appendChild(button)
+            row.appendChild(cellDate2);
+
             tableBody.appendChild(row);
         }
-        const row = document.createElement('tr');
 
-
-        const cellTitre = document.createElement('td');
-        cellTitre.textContent = data[i].titre;
-        row.appendChild(cellTitre);
-
-        const cellCategorie = document.createElement('td');
-        cellCategorie.textContent = data[i].categorie;
-        row.appendChild(cellCategorie);
-
-        const cellMontant = document.createElement('td');
-        cellMontant.textContent = data[i].montant + "€";
-        row.appendChild(cellMontant);
-
-        const cellDate = document.createElement('td');
-        cellDate.textContent = formatDate(data[i].date);
-        row.appendChild(cellDate);
-
-        tableBody.appendChild(row);
 
     }else{
         const tableBody = document.getElementById('tBody');
@@ -134,4 +126,9 @@ function sortTable(columnIndex) {
     // Mettre à jour la colonne triée et l'ordre de tri
     table.lastSortedColumn = columnIndex;
     table.lastSortOrder = sortOrder;
+}
+
+function deleteDepense() {
+    const id = event.target.getAttribute('data-index')
+    deleteDepenseRow(id)
 }

@@ -44,7 +44,6 @@ async function login(data) {
 
 async function addDepense(data) {
     try {
-        console.log(data)
         const response = await fetch('http://localhost:3000/account/addDepenses', {
             method: 'POST',
             headers: {
@@ -68,16 +67,12 @@ async function addDepense(data) {
 
 async function getDepenses() {
     try {
-        const storedUserData = localStorage.getItem("userData");
-        let titre = sessionStorage.getItem('titre')
-        if (storedUserData) {
-            const data = JSON.parse(storedUserData);
-            titre = JSON.parse(titre);
-            console.log(titre)
-            const response = await fetch(`http://localhost:3000/account/getDepenses/${data._id}?titre=${titre}`, {
+        let idCompte = sessionStorage.getItem('idCompte')
+        if (idCompte) {
+            idCompte = JSON.parse(idCompte);
+            const response = await fetch(`http://localhost:3000/account/getDepenses/${idCompte}`, {
                 method: 'GET'
             });
-
             if (response.ok) {
                 return await response.json();
             } else {
@@ -86,7 +81,7 @@ async function getDepenses() {
             }
         }
     } catch (error) {
-        console.error(error);
+        console.error (error);
     }
 }
 
@@ -134,22 +129,21 @@ async function getAccounts() {
     }
 }
 
-async function changeValue(ancienTitre, title, plafond) {
+async function changeValue(idAccount, title, plafond) {
     try {
         const storedUserData = localStorage.getItem("userData");
-        console.log(ancienTitre)
-        console.log(title)
-        console.log(plafond)
+console.log(ancienTitre)
+console.log(title)
+console.log(plafond)
         if (storedUserData) {
             const data = JSON.parse(storedUserData);
-            console.log(data);
             const response = await fetch(`http://localhost:3000/account/update/${data._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    ancien: ancienTitre,
+                    idAccount: idAccount,
                     title: title,
                     plafond: plafond
                 })
@@ -226,5 +220,36 @@ async function updateUser(data) {
     }
 }
 
-module.exports = {signin, login, getDepenses, getDepensesBySearch, getAccounts, addDepense, changeValue, getCategorieUser, updateUser};
+async function deleteDepenseRow(idDepense) {
+    try {
+        let idCompte = sessionStorage.getItem("idCompte");
+        if (idCompte) {
+
+            idCompte = JSON.parse(idCompte);
+            const response = await fetch(`http://localhost:3000/account/deleteDepense`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    idDepense: idDepense,
+                    idAccount: idCompte
+                })
+            });
+
+            if (response.ok) {
+                await response.json()
+                window.location.reload()
+            } else {
+                const errorData = await response.json();
+                console.error(errorData.message);
+            }
+        }
+    } catch
+        (error) {
+        console.error(error);
+    }
+}
+
+module.exports = {signin, login, getDepenses, getDepensesBySearch, deleteDepenseRow, getAccounts, addDepense, changeValue, getCategorieUser, updateUser};
 

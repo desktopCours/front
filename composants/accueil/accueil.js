@@ -23,6 +23,8 @@ function showAccounts() {
         const accountDiv = document.createElement('div');
         accountDiv.classList.add('account');
         divTotal.classList.add('divAccount')
+        accountDiv.setAttribute('data-index', i);
+
 
         const edit = document.createElement('button')
         edit.textContent = 'Edit'
@@ -77,11 +79,14 @@ function showAccounts() {
 
 function goToDepenses() {
     const accountDiv = event.target.closest('.account');
+    const index = accountDiv.getAttribute('data-index');
+    console.log(data)
+    console.log(index)
     const titre = accountDiv.querySelector('p:first-of-type').textContent;
     if (titre === '+') {
         window.location.href = '../addACCOUNT/addACCOUNT.html'
     } else {
-        sessionStorage.setItem("titre", JSON.stringify(titre))
+        sessionStorage.setItem("idCompte", JSON.stringify(data[index]._id))
         window.location.href = '../listeDepenses/listeDepenses.html'
     }
 }
@@ -92,7 +97,7 @@ function openModal() {
     const titre = document.getElementById('inputTitre')
     const plafond = document.getElementById('inputPlafond')
     const index = event.target.getAttribute('data-index');
-    indexEdit = index
+
     titre.value = data[index].title
     plafond.value = data[index].plafond
     modal.style.display = "block";
@@ -106,6 +111,6 @@ function closeModal() {
 function confirmModal() {
     const titre = document.getElementById('inputTitre')
     const plafond = document.getElementById('inputPlafond')
-    changeValue(data[indexEdit].title, titre.value, plafond.value)
+    changeValue(data[indexEdit]._id, titre.value, plafond.value)
 }
 
