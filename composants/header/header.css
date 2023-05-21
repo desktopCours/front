@@ -1,3 +1,39 @@
+.header .home .img-container,
+.header .setting .img-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.header .home .img-container::after,
+.header .setting .img-container::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 88%;
+  height: 86%;
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.header .home .img-container:hover::after,
+.header .setting .img-container:hover::after {
+  opacity: 1;
+}
+
+.header .home .img-container img,
+.header .setting .img-container img {
+  transition: transform 0.3s ease;
+}
+
+.header .home .img-container:hover img,
+.header .setting .img-container:hover img {
+  transform: scale(0.9);
+}
+
 .titleName {
     background-color: white;
     color: rgb(46, 46, 46);
@@ -71,3 +107,24 @@
       background-color: white;
     }
   }
+
+.button {
+  /* styles par défaut du bouton */
+  padding: 0.5rem 1rem;
+  background-color: #ccc;
+  font-size: 1rem;
+  border: 2px solid rgb(46, 46, 46);
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  color: black
+}
+
+.button:hover {
+  /* animation au survol */
+  background-color: #adabab;
+}
+
+.button:active {
+  /* animation lors du clic */
+  transform: scale(0.95);
+}

@@ -7,6 +7,7 @@ const createWindow = () => {
   const win = new BrowserWindow({
 
     webPreferences: {
+      webSecurity: false,
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
@@ -15,7 +16,9 @@ const createWindow = () => {
   })
   win.maximize();
 
-  win.loadFile('composants/connexion/connexion.html')
+  win.loadFile('composants/accueil/accueil.html')
+
+
 }
 
 // Écouter l'événement 'load-page' depuis le rendu

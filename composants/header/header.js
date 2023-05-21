@@ -9,7 +9,7 @@ function goToHome() {
   function goToAddDepense() {
     window.location.href = "../addDepense/addDepense.html";
   }
-  
+
   function goToExit() {
     localStorage.clear();
     window.location.href = "../connexion/connexion.html";
