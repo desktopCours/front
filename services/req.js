@@ -87,6 +87,28 @@ async function addAccount(data) {
     }
 }
 
+async function supprimerCompte(idCompte) {
+    try {
+        const response = await fetch(`http://localhost:3000/account/delete/${idCompte}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+        });
+
+        if (response.ok) {
+
+          window.location.reload()
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
 async function getDepenses() {
     try {
         let idCompte = sessionStorage.getItem('idCompte')
@@ -311,6 +333,7 @@ module.exports = {
     changeValue,
     getCategorieUser,
     updateUser,
-    addAccount
+    addAccount,
+    supprimerCompte
 };
 

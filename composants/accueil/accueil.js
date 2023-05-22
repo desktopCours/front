@@ -1,4 +1,4 @@
-const {getAccounts, changeValue, changeValueAccount} = require("../../services/req");
+const {getAccounts, changeValue, changeValueAccount, supprimerCompte} = require("../../services/req");
 const container = document.querySelector('.container');
 const mainContainer = document.querySelector('.wrapAll')
 const divCompteSolo = document.createElement('div')
@@ -147,6 +147,8 @@ function openModal() {
     const titre = document.getElementById('inputTitre')
     const plafond = document.getElementById('inputPlafond')
     const index = event.target.getAttribute('data-index');
+    const deleteButton = document.getElementById('supprimerCompte')
+    deleteButton.removeAttribute('hidden')
     indexEdit = index
     titre.value = data[index].title
     plafond.value = data[index].plafond
@@ -159,6 +161,8 @@ function openModalCourant() {
     const plafond = document.getElementById('inputPlafond')
     const total = document.getElementById('inputDef')
     const validerButton = document.getElementById('validerModal')
+    const deleteButton = document.getElementById('supprimerCompte')
+    deleteButton.setAttribute('hidden',true)
     validerButton.setAttribute('onclick','confifrmModalAccount()')
     total.textContent = 'total'
     titre.setAttribute('disabled',true)
@@ -186,4 +190,10 @@ function confifrmModalAccount() {
     const total = document.getElementById('inputPlafond')
 
     changeValueAccount(total.value, idCompte)
+}
+
+function supprimerAccount(){
+    const idCompte = data[indexEdit]._id
+
+    supprimerCompte(idCompte)
 }

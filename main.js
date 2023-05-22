@@ -15,7 +15,8 @@ const createWindow = () => {
         },
     })
     win.maximize();
-    win.loadFile('composants/accueil/accueil.html')
+    win.setMenu(null)
+    win.loadFile('composants/connexion/connexion.html')
 
 
 }

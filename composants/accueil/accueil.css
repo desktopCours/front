@@ -81,6 +81,16 @@ body {
   background-color: pink;
 }
 
+.deleteAccount {
+  background-color: firebrick;
+  color: white;
+  border-radius: 20px;
+}
+
+button:hover {
+  scale: 0.9;
+}
+
 .addAccount {
   font-size: 50px;
   color: black;
